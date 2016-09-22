@@ -1,0 +1,46 @@
+
+
+int getIntChoice()
+{
+    int reads; /* used to "read" through the line */
+    int num; /* used to store the integer */
+    char c; /* used to hold the unwanted characters */
+    printMenu(); /* prints the initial menu */
+
+    /* will only proceed if there is only an int and a newline present */
+    while(((reads=scanf("%d%c",&num,&c)) != 2 && reads != EOF) || c != '\n')
+    {
+        printf("Invalid choice.\n"); /* error */
+        printMenu();				 /* print menu again */
+        
+        /* read at least one character until the next newline. This will
+        essentially remove the backlog of unwanted characters */
+        do {
+            reads = scanf("%c", &c);
+        }while(reads != EOF && c != '\n');
+    }
+
+    return num; /* return the integer */
+}
+
+int getIntBirthday(char type[MAX_TYPE_LENGTH])
+{
+    int reads; /* used to "read" through the line */
+    int num; /* used to store the integer */
+    char c; /* used to hold the unwanted character */
+    printf("Enter birthday: %s>", type); /* prints the prompt */
+
+    /* will only proceed if there is only an int and a newline present */
+    while(((reads=scanf("%d%c",&num,&c)) != 2 && reads != EOF) || c != '\n')
+    {
+        printf("Invalid choice. "); /* error */
+        printf("Enter birthday: %s>", type); /* prints the prompt again */
+        
+        /* read at least one character until the next newline. This will
+        essentially remove the backlog of unwanted characters */
+        do {
+            reads = scanf("%c", &c);
+        }while(reads != EOF && c != '\n');
+    }
+    return num; /* return the integer */
+}
