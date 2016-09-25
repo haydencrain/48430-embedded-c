@@ -15,18 +15,9 @@ A brief statement on what you could achieve (less than 50 words):
 A brief statement on what you could NOT achieve (less than 50 words):
 
 ******************************** TO COMPLETE: *********************************
-- OVERWRITE FILE BEFORE SAVING
 
 - COMPARE MY OUTPUT FILE WITH THE SOLUTION OUTPUT FILE TO MAKE SURE THAT BOTH
-OUTPUTS ARE THE SAME.
-
-- TEST WHAT HAPPENS IF YOU PUT A SPACE AND THEN A NUMBER 
-
-- KEEP PLAYING AROUND WITH MORE TEST CASES AND ADD THEM IN 
-
-- FIRSTNAME LAST NAME
-
-- NEWLINE 
+OUTPUTS ARE THE SAME. 
 *******************************************************************************
 
 NOTE:: My code has been formatted to fit the 80 limit using a tab width of 4.
@@ -53,7 +44,7 @@ List preprocessing directives - you may define your own.
 /* Maximum length of the string - student name. Note that all strings in C are
 NULL terminated i.e. '\0' at the end of the string. Hence the length of the
 actual name can be 10 characters at most*/
-#define MAX_NAME_SIZE 11
+#define MAX_NAME_SIZE 10
 /*number that will be used to exit the program*/
 #define EXIT 6 
 /* Static file name of the text file where student list is stored */
@@ -116,12 +107,12 @@ int addStudent(student studentlist[], int *no_students);
 int deleteStudent(int *no_students); 
 
 /* GETTERS */
-
 int getIntPrompt(char type[MAX_TYPE_LENGTH]);
 float getFloatPrompt();
-int getDay();
-int getMonth();
-int getYear();
+int getBirthDay();
+int getBirthMonth();
+int getBirthYear();
+float getGPA();
 
 /* PRINT FUNCTIONS */
 void printMenu(void);  
@@ -144,7 +135,8 @@ int main(void)
 
 	do /* post-while loop which will loop until EXIT is entered by the user */
 	{
-		choice = getIntPrompt(TYPE_MENU); /* ensures that the choice is only int */
+		choice = getIntPrompt(TYPE_MENU); 
+		/* ensures that the choice is only int */
 
 		switch (choice) /*chooses an option based on what number was chosen*/
 		{
@@ -165,11 +157,11 @@ int main(void)
 
 			case EXIT: break; 	/* number used to exit the program */
 			
-			default: printf("Invalid choice.\n"); 
+			default: printf("Invalid Choice.\n"); 
 			/* other numbers are not used */
 		}
 
-	} while (choice != EXIT); /* program will exit */
+	} while(choice != EXIT); /* program will exit */
 
 	return 0;
 } 
@@ -188,62 +180,24 @@ int addStudent(student studentlist[], int *no_students)
 {
 	student student_temp; /* make a new temporary student */
 
-	char input_string[MAX_INPUT_LENGTH];
-	int birthday_num; /* used to temporarily store the student's birth day, 
-	birth month or birth year */
-
-	float gpa; /* used to temporarily store the student's gpa */
-
-	if (*no_students == MAX_CLASS_SIZE) /* if there are no more spots in class */
+	if (*no_students == MAX_CLASS_SIZE) /*if there are no more spots in class*/
 	{
 		printf("Class is full\n"); 
 		return 1; /* return 1 if unsuccessful */
 	}
 	
-    /* GET STUDENT's NAME */
+	/* GET STUDENT'S NAME */
+	char input_string[MAX_INPUT_LENGTH]; /* used to store the string input */
 	printf("Enter name>"); /* ask for student's name */
 	fgets(input_string, sizeof(input_string), stdin);
+	input_string[strcspn(input_string, "\n")] = 0; /* remove any newlines */
+	strncpy(student_temp.name, input_string, (MAX_NAME_SIZE));
+	student_temp.name[MAX_NAME_SIZE] = '\0'; /* add null character to end */
 
-	strncpy(student_temp.name, input_string, (MAX_NAME_SIZE-1));
-	printf("%s\n", student_temp.name);
-	student_temp.name[MAX_NAME_SIZE] = '\0';
-
-
-	/* GET STUDENT'S DAY OF BIRTH */
-	while((birthday_num = getIntPrompt(TYPE_DAY)) < MIN_DAY || 
-		birthday_num > MAX_DAY) /* day must be inbetween 1-31 */
-	{
-		printf("Invalid choice. "); /* error */
-	}	
-	student_temp.birthday.day = birthday_num; 
-	/* add day to student_temp only once it is deemed acceptable */
-	
-	/* GET STUDENT'S MONTH OF BIRTH */
-	while((birthday_num = getIntPrompt(TYPE_MONTH)) < MIN_MONTH || 
-		birthday_num > MAX_MONTH) /* month must be inbetween 1-12 */
-	{
-		printf("Invalid choice. "); /* error */
-	}
-	student_temp.birthday.month = birthday_num;
-	/* add month to student_temp only once it is deemed acceptable */
-	
-	/* GET STUDENT'S YEAR OF BIRTH */
-	while((birthday_num = getIntPrompt(TYPE_YEAR)) < MIN_YEAR || 
-		birthday_num > MAX_YEAR) /* year must be inbetween 1800 and 2016 */
-	{
-		printf("Invalid choice. "); /* error */
-	}	
-	student_temp.birthday.year = birthday_num;
-	/* add year to student_temp only once it is deemed acceptable */
-
-	/* GET STUDENT'S GPA */
-	while((gpa = getFloatPrompt()) < MIN_GPA || gpa > MAX_GPA)
-		/* gpa must be inbetween 0.0 and 4.0 */
-	{
-		printf("Invalid GPA. ");
-	}
-	student_temp.gpa = gpa;
-	/* add gpa to student_temp only once it is deemed acceptable */
+	student_temp.birthday.day = getBirthDay(); /* get student birthday */
+	student_temp.birthday.month = getBirthMonth(); /* get student birthmonth*/
+	student_temp.birthday.year = getBirthYear(); /* get student birthyear */
+	student_temp.gpa = getGPA(); /* get student gpa */
 
 	studentlist[*no_students] = student_temp; /* append student to array */
 
@@ -297,16 +251,17 @@ int getIntPrompt(char type[MAX_TYPE_LENGTH])
     /* get the whole line and store it into a string */
     while (fgets(input, sizeof(input), stdin)) 
     {
+    	input[strcspn(input, " ")] = 0; /* remove any newlines */
         num = strtol(input, &ptr, 10);
         if (ptr == input || *ptr != '\n') 
         {
-            printf("Invalid Choice. "); /* error */
+        	/* prints prompt again */
             if(strcmp(type, TYPE_MENU) == 0)
             {
-            	printf("\n");
+            	printf("Invalid Choice.\n"); /* error */
             	printMenu();
             } else
-            	printf("Enter birthday: %s>", type); /* prints prompt again */
+            	printf("Invalid %s. Enter birthday: %s>", type, type); 
         } else break;
     }
 
@@ -314,7 +269,7 @@ int getIntPrompt(char type[MAX_TYPE_LENGTH])
 }
 
 /*******************************************************************************
-getDoubleGPA
+getFloatPrompt
 This function handles the user prompt for entering the GPA of the student. 
 The function will loop until only an double has been scanned. It 
 will then return the float. This prevents hostile entries.
@@ -333,6 +288,7 @@ float getFloatPrompt()
     /* get the whole line and store it into a string */
     while (fgets(input, sizeof(input), stdin)) 
     {
+        input[strcspn(input, " ")] = 0; /* remove any newlines */
         gpa = strtod(input, &ptr);
         if (ptr == input || *ptr != '\n') 
         {
@@ -342,6 +298,101 @@ float getFloatPrompt()
     }
 
     return gpa; /* return the integer */
+}
+
+/*******************************************************************************
+getBirthDay
+This function handles the user prompt for entering a correct birthday of the 
+student. The function will loop until a correct birthday has been entered.
+
+inputs:
+- 
+outputs:
+- int birthday_num
+*******************************************************************************/
+int getBirthDay()
+{
+	int birthday_num; /* used to temporarily store the student's birth day, 
+	birth month or birth year */
+	/* GET STUDENT'S DAY OF BIRTH */
+	while((birthday_num = getIntPrompt(TYPE_DAY)) < MIN_DAY || 
+		birthday_num > MAX_DAY) /* day must be inbetween 1-31 */
+	{
+		printf("Invalid day. "); /* error */
+	}	
+	return birthday_num; 
+	/* add day to student_temp only once it is deemed acceptable */
+}
+
+/*******************************************************************************
+getBirthMonth
+This function handles the user prompt for entering a correct birthmonth of the 
+student. The function will loop until a correct birthday has been entered.
+
+inputs:
+- 
+outputs:
+- int birthday_num
+*******************************************************************************/
+int getBirthMonth()
+{
+	int birthday_num; /* used to temporarily store the student's birth day, 
+	birth month or birth year */
+	/* GET STUDENT'S MONTH OF BIRTH */
+	while((birthday_num = getIntPrompt(TYPE_MONTH)) < MIN_MONTH || 
+		birthday_num > MAX_MONTH) /* month must be inbetween 1-12 */
+	{
+		printf("Invalid month. "); /* error */
+	}
+	return birthday_num;
+	/* add month to student_temp only once it is deemed acceptable */
+}
+
+/*******************************************************************************
+getBirthYear
+This function handles the user prompt for entering a correct birthyear of the 
+student. The function will loop until a correct birthday has been entered.
+
+inputs:
+- 
+outputs:
+- int birthday_num
+*******************************************************************************/
+int getBirthYear()
+{
+	int birthday_num; /* used to temporarily store the student's birth day, 
+	birth month or birth year */
+	/* GET STUDENT'S YEAR OF BIRTH */
+	while((birthday_num = getIntPrompt(TYPE_YEAR)) < MIN_YEAR || 
+		birthday_num > MAX_YEAR) /* year must be inbetween 1800 and 2016 */
+	{
+		printf("Invalid year. "); /* error */
+	}	
+	return birthday_num;
+	/* add year to student_temp only once it is deemed acceptable */
+}
+
+/*******************************************************************************
+getGPA
+This function handles the user prompt for entering the correct GPA of the 
+student. The function will loop until a correct GPA has been entered.
+
+inputs:
+- 
+outputs:
+- float gpa
+*******************************************************************************/
+float getGPA()
+{
+	float gpa; /* used to temporarily store the student's gpa */
+	/* GET STUDENT'S GPA */
+	while((gpa = getFloatPrompt()) < MIN_GPA || gpa > MAX_GPA)
+		/* gpa must be inbetween 0.0 and 4.0 */
+	{
+		printf("Invalid GPA. ");
+	}
+	return gpa;
+	/* add gpa to student_temp only once it is deemed acceptable */
 }
 
 /*******************************************************************************
@@ -411,7 +462,7 @@ int printStudents(const student studentlist[], int no_students)
 			studentlist[i].birthday.month,
 			studentlist[i].birthday.year,
 			studentlist[i].gpa 
-		);
+		); /* print the student */
 	}
 	return 0; /* print successful */
 }
@@ -439,7 +490,7 @@ void saveStudents(const student studentlist[], int no_students)
 			studentlist[i].birthday.month,
 			studentlist[i].birthday.year,
 			studentlist[i].gpa 
-		);
+		); /* write the student onto the line */
 	}
 
 	fclose(fptr); /*close the database file */
@@ -476,7 +527,7 @@ int readStudents(student studentlist[], int *no_students)
 			&studentlist[i].birthday.month,
 			&studentlist[i].birthday.year,
 			&studentlist[i].gpa
-		);
+		); /* read the contents of each student */
 		++i; /* increment the no. of students after every line */
 	}
 
@@ -484,5 +535,5 @@ int readStudents(student studentlist[], int *no_students)
 
 	fclose(fptr); /* close the file */
 
-	return 0;
+	return 0; /* file was read successfully */
 }
