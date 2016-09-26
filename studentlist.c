@@ -14,11 +14,6 @@ A brief statement on what you could achieve (less than 50 words):
 
 A brief statement on what you could NOT achieve (less than 50 words):
 
-******************************** TO COMPLETE: *********************************
-
-- COMPARE MY OUTPUT FILE WITH THE SOLUTION OUTPUT FILE TO MAKE SURE THAT BOTH
-OUTPUTS ARE THE SAME. 
-*******************************************************************************
 
 NOTE:: My code has been formatted to fit the 80 limit using a tab width of 4.
 
@@ -44,7 +39,7 @@ List preprocessing directives - you may define your own.
 /* Maximum length of the string - student name. Note that all strings in C are
 NULL terminated i.e. '\0' at the end of the string. Hence the length of the
 actual name can be 10 characters at most*/
-#define MAX_NAME_SIZE 10
+#define MAX_NAME_SIZE 11
 /*number that will be used to exit the program*/
 #define EXIT 6 
 /* Static file name of the text file where student list is stored */
@@ -78,6 +73,7 @@ getting an int from the user */
 #define TYPE_DAY "day"
 #define TYPE_MONTH "month"
 #define TYPE_YEAR "year"
+
 
 /*******************************************************************************
 List structs - you may define struct date and struct student only. Each struct
@@ -157,7 +153,7 @@ int main(void)
 
 			case EXIT: break; 	/* number used to exit the program */
 			
-			default: printf("Invalid Choice.\n"); 
+			default: printf("Invalid choice.\n"); 
 			/* other numbers are not used */
 		}
 
@@ -192,7 +188,7 @@ int addStudent(student studentlist[], int *no_students)
 	fgets(input_string, sizeof(input_string), stdin);
 	input_string[strcspn(input_string, "\n")] = 0; /* remove any newlines */
 	strncpy(student_temp.name, input_string, (MAX_NAME_SIZE));
-	student_temp.name[MAX_NAME_SIZE] = '\0'; /* add null character to end */
+	student_temp.name[MAX_NAME_SIZE-1] = '\0'; /* add null character to end */
 
 	student_temp.birthday.day = getBirthDay(); /* get student birthday */
 	student_temp.birthday.month = getBirthMonth(); /* get student birthmonth*/
@@ -209,7 +205,8 @@ int addStudent(student studentlist[], int *no_students)
 /*******************************************************************************
 deleteStudent
 This function removes the last Student in the list by decrementing the number 
-of students. The Student is "deleted" (it is still there but hidden).
+of students. The Student is "deleted" (it is still there but hidden from the 
+counter).
 inputs:
 - *no_students
 outputs:
@@ -240,26 +237,27 @@ outputs:
 *******************************************************************************/
 int getIntPrompt(char type[MAX_TYPE_LENGTH])
 {
-    char *ptr, input[MAX_INPUT_LENGTH]; 
+    char *ptr, input[MAX_INPUT_LENGTH]; /* used to store the input */
     int num; /* used to store the integer */
 
-    if(strcmp(type, TYPE_MENU) == 0)
-    	printMenu();
+    if(strcmp(type, TYPE_MENU) == 0) /* if menu prompt is needed */
+    	printMenu(); /* print the menu */
     else
-    	printf("Enter birthday: %s>", type); /* prints the initial menu */
+    	printf("Enter birthday: %s>", type); /* prints the birthday menu */
 
-    /* get the whole line and store it into a string */
+    /* gets the whole line and stores it into a string */
     while (fgets(input, sizeof(input), stdin)) 
     {
-    	input[strcspn(input, " ")] = 0; /* remove any newlines */
-        num = strtol(input, &ptr, 10);
-        if (ptr == input || *ptr != '\n') 
+    	input[strcspn(input, " ")] = 0; /* remove any spaces */
+        num = strtol(input, &ptr, 10); /* convert into long int */
+        if (ptr == input || *ptr != '\n')
+        /* if the input contains anything else other than a number */
         {
-        	/* prints prompt again */
+        	/* prompt is printed again */
             if(strcmp(type, TYPE_MENU) == 0)
             {
-            	printf("Invalid Choice.\n"); /* error */
-            	printMenu();
+            	printf("Invalid choice.\n"); /* error */
+            	printMenu(); /* print initial menu */
             } else
             	printf("Invalid %s. Enter birthday: %s>", type, type); 
         } else break;
@@ -280,8 +278,8 @@ outputs:
 *******************************************************************************/
 float getFloatPrompt()
 {
-    char *ptr, input[MAX_INPUT_LENGTH]; 
-    float gpa; /* used to store the integer */
+    char *ptr, input[MAX_INPUT_LENGTH]; /* used to store the input */
+    float gpa; /* used to store the float value */
 
     printf("Enter GPA>"); /* prints the prompt */
 
@@ -289,6 +287,11 @@ float getFloatPrompt()
     while (fgets(input, sizeof(input), stdin)) 
     {
         input[strcspn(input, " ")] = 0; /* remove any newlines */
+        if(input[0] == '\n') /*if input is only a newline */
+        {
+        	gpa = 0.0; /* set the gpa to 0.0 and return it */
+        	return gpa;
+        }
         gpa = strtod(input, &ptr);
         if (ptr == input || *ptr != '\n') 
         {
@@ -297,7 +300,7 @@ float getFloatPrompt()
         } else break;
     }
 
-    return gpa; /* return the integer */
+    return gpa; /* return the gpa float */
 }
 
 /*******************************************************************************
@@ -312,16 +315,15 @@ outputs:
 *******************************************************************************/
 int getBirthDay()
 {
-	int birthday_num; /* used to temporarily store the student's birth day, 
-	birth month or birth year */
+	int day; /* used to temporarily store the student's birth day */
 	/* GET STUDENT'S DAY OF BIRTH */
-	while((birthday_num = getIntPrompt(TYPE_DAY)) < MIN_DAY || 
-		birthday_num > MAX_DAY) /* day must be inbetween 1-31 */
+	while((day = getIntPrompt(TYPE_DAY)) < MIN_DAY || 
+		day > MAX_DAY) /* day must be inbetween 1-31 */
 	{
 		printf("Invalid day. "); /* error */
 	}	
-	return birthday_num; 
-	/* add day to student_temp only once it is deemed acceptable */
+	return day; 
+	/* return day only once it is deemed acceptable */
 }
 
 /*******************************************************************************
@@ -336,16 +338,15 @@ outputs:
 *******************************************************************************/
 int getBirthMonth()
 {
-	int birthday_num; /* used to temporarily store the student's birth day, 
-	birth month or birth year */
+	int month; /* used to temporarily store the student's birth month */
 	/* GET STUDENT'S MONTH OF BIRTH */
-	while((birthday_num = getIntPrompt(TYPE_MONTH)) < MIN_MONTH || 
-		birthday_num > MAX_MONTH) /* month must be inbetween 1-12 */
+	while((month = getIntPrompt(TYPE_MONTH)) < MIN_MONTH || 
+		month > MAX_MONTH) /* month must be inbetween 1-12 */
 	{
 		printf("Invalid month. "); /* error */
 	}
-	return birthday_num;
-	/* add month to student_temp only once it is deemed acceptable */
+	return month;
+	/* return month only once it is deemed acceptable */
 }
 
 /*******************************************************************************
@@ -360,16 +361,15 @@ outputs:
 *******************************************************************************/
 int getBirthYear()
 {
-	int birthday_num; /* used to temporarily store the student's birth day, 
-	birth month or birth year */
+	int year; /* used to temporarily store the student's birth year */
 	/* GET STUDENT'S YEAR OF BIRTH */
-	while((birthday_num = getIntPrompt(TYPE_YEAR)) < MIN_YEAR || 
-		birthday_num > MAX_YEAR) /* year must be inbetween 1800 and 2016 */
+	while((year = getIntPrompt(TYPE_YEAR)) < MIN_YEAR || 
+		year > MAX_YEAR) /* year must be inbetween 1800 and 2016 */
 	{
 		printf("Invalid year. "); /* error */
 	}	
-	return birthday_num;
-	/* add year to student_temp only once it is deemed acceptable */
+	return year;
+	/* return year only once it is deemed acceptable */
 }
 
 /*******************************************************************************
@@ -413,7 +413,7 @@ void printMenu(void)
 	"4. save the student list to the database\n"
 	"5. read the student list from the database\n"
 	"6. exit the program\n"
-	"Enter your choice>");
+	"Enter your choice>"); /* print initial menu */
 }
 
 /*******************************************************************************
@@ -427,8 +427,8 @@ outputs:
 *******************************************************************************/
 void printColumnTitles(void)
 {
-	printf("%-10s %-10s %-6s\n", "Name", "Birthday", "GPA");
-	printf("---------- ---------- ------\n");
+	printf("%-10s %-10s %s\n", "Name", "Birthday", "GPA");
+	printf("---------- ---------- ------\n"); /* print column titles */
 }
 
 /*******************************************************************************

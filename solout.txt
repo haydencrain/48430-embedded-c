@@ -69,24 +69,7 @@ Enter your choice>Class is empty
 4. save the student list to the database
 5. read the student list from the database
 6. exit the program
-Enter your choice>
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Class is full
+Enter your choice>Read error
 
 
 1. add student
@@ -104,268 +87,7 @@ Enter your choice>Invalid choice.
 4. save the student list to the database
 5. read the student list from the database
 6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Class is full
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Class is full
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
+Enter your choice>Enter name>Enter birthday: day>Invalid day. Enter birthday: day>Invalid day. Enter birthday: day>Invalid day. Enter birthday: day>Invalid day. Enter birthday: day>Invalid day. Enter birthday: day>Enter birthday: month>Invalid month. Enter birthday: month>Invalid month. Enter birthday: month>Invalid month. Enter birthday: month>Invalid month. Enter birthday: month>Invalid month. Enter birthday: month>Enter birthday: year>Invalid year. Enter birthday: year>Invalid year. Enter birthday: year>Invalid year. Enter birthday: year>Invalid year. Enter birthday: year>Invalid year. Enter birthday: year>Enter GPA>Invalid GPA. Enter GPA>Invalid GPA. Enter GPA>Invalid GPA. Enter GPA>
 
 1. add student
 2. delete last student
@@ -390,17 +112,7 @@ Enter your choice>Enter name>Enter birthday: day>Enter birthday: month>Enter bir
 4. save the student list to the database
 5. read the student list from the database
 6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Class is full
-
+Enter your choice>Enter name>Enter birthday: day>Enter birthday: month>Enter birthday: year>Enter GPA>
 
 1. add student
 2. delete last student
@@ -417,34 +129,7 @@ Enter your choice>Invalid choice.
 4. save the student list to the database
 5. read the student list from the database
 6. exit the program
-Enter your choice>Class is full
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
-
-1. add student
-2. delete last student
-3. display student list
-4. save the student list to the database
-5. read the student list from the database
-6. exit the program
-Enter your choice>Invalid choice.
-
+Enter your choice>Enter name>Enter birthday: day>Enter birthday: month>Enter birthday: year>Enter GPA>
 
 1. add student
 2. delete last student
@@ -480,13 +165,10 @@ Enter your choice>Invalid choice.
 6. exit the program
 Enter your choice>Name       Birthday   GPA
 ---------- ---------- ------
-Hayden
-    27-12-2016 4.0000
-Steve
-     01-02-1996 3.5000
-Hello My N 01-02-1996 3.5000
-Steve
-     01-02-1996 3.5000
+Hayden Cra 27-12-2016 4.0000
+Steve      01-02-1996 0.0000
+Hayden     01-02-1996 3.5000
+Steve      01-02-1996 3.5000
 Steve      01-02-1996 3.5000
 
 
@@ -558,6 +240,30 @@ Enter your choice>Invalid choice.
 5. read the student list from the database
 6. exit the program
 Enter your choice>
+
+1. add student
+2. delete last student
+3. display student list
+4. save the student list to the database
+5. read the student list from the database
+6. exit the program
+Enter your choice>Invalid choice.
+
+
+1. add student
+2. delete last student
+3. display student list
+4. save the student list to the database
+5. read the student list from the database
+6. exit the program
+Enter your choice>Name       Birthday   GPA
+---------- ---------- ------
+Hayden Cra 27-12-2016 4.0000
+Steve      01-02-1996 0.0000
+Hayden     01-02-1996 3.5000
+Steve      01-02-1996 3.5000
+Jeff       03-01-1957 2.9000
+
 
 1. add student
 2. delete last student
