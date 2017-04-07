@@ -1,26 +1,4 @@
 /*******************************************************************************
-48430 Embedded C - Assignment 2
-Name: Hayden Crain
-Student ID: 98105873
-Date of submission: 
-A brief statement on what you could achieve (less than 50 words):
-- adding a student to the list.
-- if there are 5 students already, no more students are to be added
-- removing a student off the list.
-- printing the students, showing all of their information.
-- saving the students to a database text file.
-- loading the students from a database text file.
-- accounted for careless and hostile entries.
-
-A brief statement on what you could NOT achieve (less than 50 words):
-
-
-NOTE:: My code has been formatted to fit the 80 limit using a tab width of 4.
-
-
-*******************************************************************************/
-
-/*******************************************************************************
 List of header files - do NOT use any other header files. Note that stdlib and
 cstring are included in case you want to use any of the functions in there.
 However the task can be achieved with stdio only.
