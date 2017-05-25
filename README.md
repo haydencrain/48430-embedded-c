@@ -1,1 +1,3 @@
-# c-assignment2
+# Embedded C
+
+A collection of Embedded C assignments 
