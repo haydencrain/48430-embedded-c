@@ -1,23 +1,4 @@
 /*******************************************************************************
-48430 Embedded C - Advanced Assignment
-Name: Hayden Crain
-Student ID: 98105873
-Date of submission: 2/10/2016
-A brief statement on what you could achieve (less than 50 words):
-- Add the inputs into a linked list
-- print the linked list
-- delete the header appropriately
-- delete the vowels and re link the list appropriately
-- check if the list is empty
-
-A brief statement on what you could NOT achieve (less than 50 words):
-
-
-NOTE:: My code has been formatted to fit the 80 limit using a tab width of 4.
-
-*******************************************************************************/
-
-/*******************************************************************************
 List of header files - do NOT use any other header files. Note that string.h is
 included in case you want to use any of the functions in there. However the task
 can be achieved with stdio.h and stdlib.h only.
